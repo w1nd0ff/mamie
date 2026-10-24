@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mamie Bistro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Tenor+Sans&family=Lora:wght@400;500&display=swap">
+<style>
+/* Layout: Provençal bistro — limewashed plaster ground, floral-tapestry band like the banquettes, the paper menu reproduced as a sheet with tabs, table request card, dark-wood footer. Navy from the printed menu wordmark. */
+:root{
+  --plaster:#EEE7DC;
+  --linen:#FAF7F1;
+  --fg:#2A221C;
+  --muted:#6E6257;
+  --line:#D9CFC1;
+  --navy:#26387A;
+  --rust:#A4522F;
+  --wood:#3A2A20;
+  --sage:#7C8A6A;
+  --display:"Cormorant Garamond", "Garamond", Georgia, serif;
+  --caps:"Tenor Sans", "Gill Sans", system-ui, sans-serif;
+  --body:"Lora", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --plaster:#1C1714;--linen:#251F1B;--fg:#F0E9DF;--muted:#B3A698;--line:#3C332C;
+  --navy:#9FB0EE;--rust:#DB8A62;--wood:#120E0B;--sage:#A9B697;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --plaster:#1C1714;--linen:#251F1B;--fg:#F0E9DF;--muted:#B3A698;--line:#3C332C;
+  --navy:#9FB0EE;--rust:#DB8A62;--wood:#120E0B;--sage:#A9B697;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--plaster);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance;line-height:1.08}
+.caps{font-family:var(--caps);text-transform:uppercase;letter-spacing:.28em;font-size:12px}
+a{color:var(--navy)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+
+.demo{font-size:12px;color:var(--muted);border-bottom:1px solid var(--line)}
+.demo .wrap{padding-block:7px}
+
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-block:22px;flex-wrap:wrap}
+.word{color:var(--navy);text-align:center;line-height:1}
+.word b{display:block;font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:.32em;margin-right:-.32em}
+.word span{font-family:var(--caps);font-size:11px;letter-spacing:.5em;margin-right:-.5em}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{font-family:var(--caps);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--fg);text-decoration:none}
+
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding-block:36px 64px}
+.hero h1{font-size:clamp(44px,6.8vw,84px)}
+.hero h1 i{color:var(--rust)}
+.lead{font-size:18px;color:var(--muted);max-width:30em;margin:22px 0 0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{font-family:var(--caps);text-transform:uppercase;letter-spacing:.16em;font-size:12px;text-decoration:none;padding:14px 22px;border:1px solid var(--navy);color:var(--navy);background:none;cursor:pointer}
+.btn.solid{background:var(--navy);color:var(--linen)}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px}
+.facts div{display:flex;flex-direction:column}
+.facts b{font-family:var(--display);font-size:32px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.facts span{font-size:13px;color:var(--muted)}
+/* arched window */
+.window{aspect-ratio:3/4;max-width:100%;width:100%;max-width:400px;justify-self:center;border-radius:200px 200px 0 0;border:10px solid var(--wood);background:linear-gradient(var(--linen),var(--linen)) padding-box;position:relative;overflow:hidden;display:grid;place-items:end center}
+.window::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:8px;background:var(--wood);transform:translateX(-50%)}
+.window::after{content:"";position:absolute;left:0;right:0;top:42%;height:8px;background:var(--wood)}
+.window svg{position:relative;z-index:1;width:72%;height:auto;margin-bottom:-2px}
+
+/* tapestry band */
+.tapestry{height:56px;background-color:var(--wood);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none'%3E%3Ccircle cx='28' cy='28' r='9' fill='%23A4522F'/%3E%3Ccircle cx='28' cy='28' r='3.5' fill='%23E2B26A'/%3E%3Cellipse cx='28' cy='12' rx='4' ry='7' fill='%237C8A6A'/%3E%3Cellipse cx='28' cy='44' rx='4' ry='7' fill='%237C8A6A'/%3E%3Cellipse cx='12' cy='28' rx='7' ry='4' fill='%237C8A6A'/%3E%3Cellipse cx='44' cy='28' rx='7' ry='4' fill='%237C8A6A'/%3E%3Ccircle cx='0' cy='0' r='5' fill='%23C98B6B'/%3E%3Ccircle cx='56' cy='0' r='5' fill='%23C98B6B'/%3E%3Ccircle cx='0' cy='56' r='5' fill='%23C98B6B'/%3E%3Ccircle cx='56' cy='56' r='5' fill='%23C98B6B'/%3E%3C/g%3E%3C/svg%3E")}
+
+section{padding-block:64px}
+.shead{display:grid;gap:10px;text-align:center;justify-items:center}
+.shead .caps{color:var(--rust)}
+section h2{font-size:clamp(34px,5vw,56px)}
+.sub{color:var(--muted);max-width:38em;margin:0}
+
+/* menu sheet */
+.sheet{background:var(--linen);border:1px solid var(--line);margin-top:34px;padding:36px clamp(16px,4vw,48px) 40px;box-shadow:0 1px 0 var(--line),0 18px 40px -30px rgba(40,25,10,.45)}
+.sheet .word{margin-bottom:22px}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 4px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.tabs button{font-family:var(--caps);text-transform:uppercase;letter-spacing:.16em;font-size:11px;background:none;border:0;padding:8px 12px;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--navy);box-shadow:inset 0 -2px 0 var(--navy)}
+.dishes{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:4px 48px}
+.dishes li{padding:12px 0;border-bottom:1px dotted var(--line);display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline}
+.dishes .n{font-family:var(--display);font-size:21px;font-weight:600;line-height:1.2;min-width:0}
+.dishes .p{font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dishes .d{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.menu-note{text-align:center;font-size:13px;color:var(--muted);margin:22px 0 0}
+
+/* scores */
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.score{background:var(--linen);border:1px solid var(--line);padding:22px;text-align:center;display:grid;gap:6px}
+.score b{font-family:var(--display);font-size:46px;font-weight:600;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.score span{font-size:14px;color:var(--muted)}
+
+/* booking */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px;align-items:start}
+form{display:grid;gap:14px;background:var(--linen);border:1px solid var(--line);padding:24px}
+label{display:grid;gap:6px;font-family:var(--caps);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted)}
+input,select{font:inherit;font-family:var(--body);font-size:16px;text-transform:none;letter-spacing:0;color:var(--fg);background:var(--plaster);border:1px solid var(--line);padding:10px 12px;width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note-card{border:1px solid var(--navy);padding:24px;display:grid;gap:12px;min-width:0}
+.note-card pre{margin:0;white-space:pre-wrap;font-family:var(--display);font-size:20px;line-height:1.4}
+.fine{font-size:13px;color:var(--muted);margin:0}
+
+footer{background:var(--wood);color:#EFE6D8}
+footer .wrap{padding-block:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+footer h3{font-size:24px;color:#EFE6D8}
+footer p{margin:6px 0 0;color:#CDBFAE;font-size:15px}
+footer a{color:#EFE6D8}
+footer .copy{font:inherit;font-size:12px;cursor:pointer;background:none;border:1px solid #6A5546;color:#CDBFAE;padding:3px 9px;margin-top:8px}
+.foot2 .wrap{padding-block:14px;font-size:12px;color:#A8988A;border-top:1px solid #4E3C30;grid-template-columns:1fr}
+
+@media (max-width:820px){
+  .hero .wrap,.book{grid-template-columns:1fr}
+  .window{max-width:240px;order:-1}
+  .dishes{grid-template-columns:1fr}
+  .scores{grid-template-columns:repeat(2,1fr)}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .curtain{transform-origin:top;animation:sway 6s ease-in-out infinite}
+  @keyframes sway{0%,100%{transform:skewX(0)}50%{transform:skewX(2deg)}}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap">Демо-версия сайта. Меню и цены взяты из меню доставки и могут отличаться в зале.</div></div>
+
+<header class="top"><div class="wrap">
+  <div class="word"><b>MAMIE</b><span>BISTRO</span></div>
+  <nav aria-label="Разделы"><a href="#menu">Меню</a><a href="#book">Стол</a><a href="#visit">Адрес</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <div class="caps" style="color:var(--rust)">Большая Никитская · у Консерватории</div>
+    <h1 style="margin-top:16px">Парижское бистро в&nbsp;стиле <i>Прованса</i></h1>
+    <p class="lead">Светлый зал с высокими окнами, банкетки в цветах, белые скатерти и тихий джаз. Завтраки, антрекот с перечным соусом, луковый суп и тропезьен на десерт.</p>
+    <div class="cta">
+      <a class="btn solid" href="#book">Забронировать стол</a>
+      <a class="btn" href="#menu">Меню</a>
+    </div>
+    <div class="facts">
+      <div><b>4,8</b><span>1688 оценок</span></div>
+      <div><b>до 00:00</b><span>каждый вечер</span></div>
+      <div><b>2026</b><span>«Хорошее место»</span></div>
+    </div>
+  </div>
+  <div class="window" role="img" aria-label="Окно бистро с занавеской и лампой">
+    <svg viewBox="0 0 200 160" aria-hidden="true">
+      <path class="curtain" d="M10 0 H90 V70 Q70 80 50 70 Q30 80 10 70 Z" fill="var(--plaster)" opacity=".9"/>
+      <path class="curtain" d="M110 0 H190 V70 Q170 80 150 70 Q130 80 110 70 Z" fill="var(--plaster)" opacity=".9"/>
+      <rect x="20" y="132" width="160" height="10" fill="var(--wood)"/>
+      <path d="M60 132 q0 -24 20 -28 q-4 18 4 28 Z" fill="var(--sage)"/>
+      <path d="M78 132 q6 -34 18 -40 q-2 24 -6 40 Z" fill="var(--sage)"/>
+      <circle cx="88" cy="96" r="5" fill="var(--rust)"/><circle cx="74" cy="106" r="4" fill="var(--rust)"/>
+      <rect x="66" y="118" width="30" height="14" fill="var(--rust)" opacity=".8"/>
+      <path d="M120 132 v-26 h18 v26" fill="none" stroke="var(--navy)" stroke-width="3"/>
+      <path d="M118 106 h22" stroke="var(--navy)" stroke-width="3"/>
+    </svg>
+  </div>
+</div></div>
+
+<div class="tapestry" role="presentation"></div>
+
+<section id="menu"><div class="wrap">
+  <div class="shead">
+    <div class="caps">La carte</div>
+    <h2>Меню бистро</h2>
+    <p class="sub">Завтраки подают с утра, а к ужину — тартары, утка конфи и большой багет на всю компанию.</p>
+  </div>
+  <div class="sheet">
+    <div class="word"><b>MAMIE</b><span>BISTRO</span></div>
+    <div class="tabs" role="tablist" aria-label="Разделы меню" id="tabs"></div>
+    <ul class="dishes" id="dishes"></ul>
+    <p class="menu-note">Цены по меню доставки на 4 октября. В зале блюда и цены могут отличаться.</p>
+  </div>
+</div></section>
+
+<div class="tapestry" role="presentation"></div>
+
+<section id="reviews"><div class="wrap">
+  <div class="shead">
+    <div class="caps">Ce qu'on dit</div>
+    <h2>За что любят Mamie</h2>
+    <p class="sub">Доля положительных упоминаний в 913 отзывах на Яндекс Картах.</p>
+  </div>
+  <div class="scores">
+    <div class="score"><b>100%</b><span>красивая подача блюд</span></div>
+    <div class="score"><b>100%</b><span>романтическая атмосфера</span></div>
+    <div class="score"><b>95%</b><span>интерьер</span></div>
+    <div class="score"><b>92%</b><span>с детьми</span></div>
+  </div>
+</div></section>
+
+<section id="book" style="border-top:1px solid var(--line)"><div class="wrap">
+  <div class="shead">
+    <div class="caps">Réservation</div>
+    <h2>Стол на вечер</h2>
+    <p class="sub">Вечером в Mamie много гостей, поэтому стол лучше бронировать заранее. Заполните поля, и мы соберём сообщение для звонка или мессенджера.</p>
+  </div>
+  <div class="book">
+    <form id="bookForm" novalidate>
+      <div class="two">
+        <label>Дата<input type="date" id="bDate"></label>
+        <label>Время<input type="time" id="bTime" value="19:30" step="900"></label>
+      </div>
+      <div class="two">
+        <label>Гостей<input type="number" id="bGuests" min="1" max="30" value="2"></label>
+        <label>Повод<select id="bOcc">
+          <option>Ужин</option><option>Завтрак</option><option>Свидание</option><option>День рождения</option><option>Встреча с друзьями</option><option>С детьми</option>
+        </select></label>
+      </div>
+      <label>Ваше имя<input type="text" id="bName" placeholder="Например, Анна"></label>
+      <label>Пожелания<input type="text" id="bWish" placeholder="Стол у окна, на веранде..."></label>
+    </form>
+    <div class="note-card">
+      <div class="caps" style="color:var(--navy)">Ваша бронь</div>
+      <pre id="bMsg" aria-live="polite"></pre>
+      <div class="cta" style="margin-top:4px">
+        <a class="btn solid" href="tel:+74951897878">Позвонить</a>
+        <button class="btn" type="button" id="bCopy">Скопировать текст</button>
+      </div>
+      <p class="fine">Телефон бронирования: +7 (495) 189-78-78</p>
+    </div>
+  </div>
+</div></section>
+
+<footer id="visit"><div class="wrap">
+  <div><h3>Адрес</h3><p>Москва, Большая Никитская ул., 14, стр. 7</p><p>Метро «Александровский сад», около 10 минут пешком. Рядом Консерватория.</p></div>
+  <div><h3>Часы</h3><p>Открыто до полуночи</p><p>Можно с собакой · еда навынос · доставка</p><p>Средний счёт 3000–5000 ₽</p></div>
+  <div><h3>Бронирование</h3><p>+7 (495) 189-78-78</p><button class="copy" id="copyPhone" type="button">Скопировать номер</button><p><a href="https://yandex.ru/maps/org/mamie/242469143795/" target="_blank" rel="noopener">Маршрут в Яндекс Картах</a></p></div>
+</div></footer>
+<div class="foot2" style="background:var(--wood)"><div class="wrap" style="display:block">Mamie Bistro · Демо-версия сайта</div></div>
+
+<script>
+var MENU={
+ "Завтрак":[["Крок-мадам",1490,"Тартин с окороком, моцареллой и глазуньей"],["Французский тост, голубика",950,"Бриошь, сметана, соус из чёрной смородины"],["Баскская запеканка, земляника",950,"Топлёный творог, варенье из земляники"],["Креп Филадельфия, лосось",720,"Блин со сливочным сыром и укропом"],["Омлет с козьим сыром, лисички",1290,"С ароматной зеленью и мясным соусом"],["Ленивые вареники",850,"Со сметаной и малиновым вареньем"]],
+ "Закуски":[["Тартар Парижский, картофель фри",1180,"Говядина, айоли, корнишоны, каперсы"],["Тартар Испанский, мозговая косточка",1240,"Горчица, табаско, ворчестер"],["Артишоки, рукола, пармезан",890,"Из дровяной печи, хересный винегрет"],["Дыня с пекорино",1050,"С прошутто и оливковым маслом"],["Хлеб, масло",380,"Багет и тартин, масло с зеленью"]],
+ "Горячее":[["Антрекот, перечный соус",1850,"С коньяком и картофелем фри"],["Утиная ножка конфи",1620,"Картофель, квашеная капуста, соус жу"],["Котлета из кролика, велюте с грибами",1190,"Пюре и соус с белыми грибами"],["Луковый суп",950,"С гренкой и грюйером"],["Спинка трески, цукини, томат",1690,"С артишоком"],["Чизбургер Mamie",1650,"Говядина, чеддер, бриошь"]],
+ "Паста и салаты":[["Ригатони качо э пеппе со сморчками",1380,"Пекорино, пармезан, трюфельное масло"],["Букатини с лисичками и креветками",1350,"Демиглас, сливки, сибулет"],["Орзо, белые грибы, рукола",1380,"Сливочный соус на курином бульоне"],["Нисуаз",1690,"Тунец конфи, стручковая фасоль, оливки"],["Большой овощной салат Mamie",1650,"Фермерские томаты, редис, горошек, сметана с укропом"]],
+ "Десерты и кофе":[["Тропезьен",750,"Бриошь, ванильный крем, апельсин"],["Баноффи тарт",850,"Фундук, солёная карамель, банан"],["Шоколадный трюфель",290,"Тёмный шоколад, какао"],["Капучино",460,"200 мл"],["Эспрессо-тоник",650,"200 мл"]]
+};
+var tabs=document.getElementById('tabs'),list=document.getElementById('dishes');
+function rub(n){return n.toLocaleString('ru-RU')+' ₽'}
+Object.keys(MENU).forEach(function(cat,i){
+  var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.id='mtab'+i;b.textContent=cat;
+  b.setAttribute('aria-selected',i===0?'true':'false');
+  b.addEventListener('click',function(){show(cat,b)});tabs.appendChild(b);
+});
+function show(cat,btn){
+  tabs.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-selected','false')});
+  btn.setAttribute('aria-selected','true');list.innerHTML='';
+  MENU[cat].forEach(function(d){
+    var li=document.createElement('li');
+    var n=document.createElement('span');n.className='n';n.textContent=d[0];
+    var p=document.createElement('span');p.className='p';p.textContent=rub(d[1]);
+    var s=document.createElement('span');s.className='d';s.textContent=d[2];
+    li.appendChild(n);li.appendChild(p);li.appendChild(s);list.appendChild(li);
+  });
+}
+show('Завтрак',document.getElementById('mtab0'));
+
+function fmt(d){if(!d)return'дата уточняется';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
+function build(){
+  var g=document.getElementById('bGuests').value||'—',n=document.getElementById('bName').value.trim(),w=document.getElementById('bWish').value.trim();
+  var t='Здравствуйте! Хочу забронировать стол в Mamie.\n'+fmt(document.getElementById('bDate').value)+', '+(document.getElementById('bTime').value||'время уточняется')+
+    '\nГостей: '+g+'\nПовод: '+document.getElementById('bOcc').value+(w?'\nПожелания: '+w:'')+(n?'\n\n'+n:'');
+  document.getElementById('bMsg').textContent=t;
+}
+['bDate','bTime','bGuests','bOcc','bName','bWish'].forEach(function(id){var el=document.getElementById(id);el.addEventListener('input',build);el.addEventListener('change',build)});
+document.getElementById('bookForm').addEventListener('submit',function(e){e.preventDefault()});
+function copy(btn,text,ok){try{navigator.clipboard.writeText(text).then(function(){btn.textContent=ok},function(){btn.textContent='Выделите текст вручную'})}catch(e){btn.textContent='Выделите текст вручную'}}
+document.getElementById('bCopy').addEventListener('click',function(e){copy(e.currentTarget,document.getElementById('bMsg').textContent,'Скопировано')});
+document.getElementById('copyPhone').addEventListener('click',function(e){copy(e.currentTarget,'+74951897878','Скопировано')});
+build();
+</script>
+
+</body>
+</html>
